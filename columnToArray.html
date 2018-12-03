@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Col2Array</title>
+</head>
+<body>
+	<h3>엑셀 세로열을 리스트, 행로 변환</h3>
+	<textarea id="inputArea" style="width:500px;height:400px;margin:auto;"></textarea>
+	<div style="margin:auto;">
+		<button onclick="trans()">쌍따옴표" 변환</button>
+		<button onclick="trans1()">홑따옴표' 변환</button>
+		<button onclick="trans2()">따옴표없이변환</button>
+		<button onclick="trans3()">엑셀 열->행 변환</button>
+		<button onclick="location.reload()">지우기</button>
+	</div>
+	<textarea id="outputArea" style="width:500px;height:400px;margin:auto;"></textarea>
+	<p id="linecount"></p>
+</body>
+<script>
+	function trans(){
+		var inputArea =  document.getElementById('inputArea');
+		var lines = inputArea.value.split('\n');
+		var outputArea = document.getElementById('outputArea');
+		console.log(lines.length);
+		for (var i = 0; i<lines.length; i++){
+			if(i==lines.length-1){
+				outputArea.innerHTML += '"'+lines[i] +'"';
+			}else{
+				outputArea.innerHTML += '"'+lines[i] +'",';	
+			}			
+		}
+		document.getElementById('linecount').innerHTML = lines.length+"개 변환완료";
+	}
+	function trans1(){
+		var inputArea =  document.getElementById('inputArea');
+		var lines = inputArea.value.split('\n');
+		var outputArea = document.getElementById('outputArea');
+		for (var i = 0; i<lines.length; i++){
+			if(i==lines.length-1){
+				outputArea.innerHTML += "'"+lines[i] +"'";
+			}else{
+				outputArea.innerHTML += "'"+lines[i] +"',";	
+			}			
+		}
+		document.getElementById('linecount').innerHTML = lines.length+"개 변환완료";
+	}
+	function trans2(){
+		var inputArea =  document.getElementById('inputArea');
+		var lines = inputArea.value.split('\n');
+		var outputArea = document.getElementById('outputArea');
+		console.log(lines.length);
+		for (var i = 0; i<lines.length; i++){
+			if(i==lines.length-1){
+				outputArea.innerHTML += lines[i];
+			}else{
+				outputArea.innerHTML += lines[i] +',';	
+			}			
+		}
+		document.getElementById('linecount').innerHTML = lines.length+"개 변환완료";
+	}
+	function trans3(){
+		var inputArea =  document.getElementById('inputArea');
+		var lines = inputArea.value.split('\n');
+		var outputArea = document.getElementById('outputArea');
+		console.log(lines.length);
+		for (var i = 0; i<lines.length; i++){
+			if(i==lines.length-1){
+				outputArea.innerHTML += lines[i];
+			}else{
+				outputArea.innerHTML += lines[i] +'\t';	
+			}			
+		}
+		document.getElementById('linecount').innerHTML = lines.length+"개 변환완료";
+	}
+</script>
+</html>
